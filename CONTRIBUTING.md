@@ -2,11 +2,15 @@
 
 This file is the canonical reference for repository workflow, branch promotion, lightweight documentation changes, and backlog maintenance.
 
-Product goals and technical decisions belong in `Super_NyanGame_Revival_PRD.md`. Deferred work belongs in `BACKLOG.md`. Licensing boundaries belong in `LICENSE.md`.
+Product goals and technical decisions belong in `PRD.md`. Deferred work belongs in `BACKLOG.md`. Licensing boundaries belong in `LICENSE.md`.
 
 The project is intentionally static-first: there is no dedicated production branch. Stable releases are deployed directly from `main`.
 
 ---
+
+## Current parity review
+
+The user approved the initial port for local squash integration into `dev` and closure of `codex/feature/legacy-parity`. Subsequent work should start from `dev` on a new topic branch. The historical upstream remains read-only. Further merges, pushes and deployments require a separate user request. These local-only restrictions override the general promotion examples below. See `DEVELOPMENT.md` for the implemented commands and `VALIDATION.md` for evidence.
 
 ## Branch roles
 

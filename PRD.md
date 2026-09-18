@@ -4,10 +4,24 @@
 **Project:** Super NyanGame Revival  
 **Legacy source:** `VJ1217-GAME`  
 **Modernization target:** Browser-first static web game  
-**Status:** Planning / pre-implementation  
+**Status:** Playable implementation / user parity review pending\
 **Primary objective:** Faithful 1:1 port first, modernization second  
 **Documentation language:** English  
 **Prepared:** 2026-09-14
+
+---
+
+## Approved parity scope (2026-09-18)
+
+The user approved the implementation plan recorded in `MIGRATION.md` and `PARITY.md`.
+
+- Active repository: `s1vh/super-nyangame-2026`; historical upstream is read-only.
+- Current ActionScript source is the behavioral authority, ahead of the SWF, video, and older GDD.
+- Correct technical leaks and stale state without rebalancing gameplay; record observable differences.
+- Preserve the original PNG atlases during parity. Convert metadata and organize loading bundles only. Physical splitting is deferred to SN-BL-001 after user acceptance. This explicitly supersedes atlas-splitting requirements in the original roadmap below.
+- Deliver local commits on a topic branch from `dev`. Push, merge, and publication require a separate request.
+- Suspend simulation and audio while the document is hidden; retain a fixed 60 Hz logical simulation.
+- Maintained documentation lives at the repository root; historical implementation is preserved in `legacy/`.
 
 ---
 
@@ -1239,7 +1253,7 @@ The exact branch model may be adapted once the repository/fork ownership decisio
 ## Phase 2 — Asset migration
 
 - inventory the monolithic sprite atlas;
-- split assets into logical families;
+- convert existing atlas metadata without repacking; defer physical splitting to SN-BL-001;
 - generate Pixi-compatible atlases/manifests;
 - validate visual parity;
 - implement bundles.
@@ -1309,7 +1323,7 @@ The parity release is ready when:
 - collisions feel consistent with the historical version;
 - required audio works after user interaction;
 - loading remains short and non-disruptive;
-- assets are split into maintainable logical bundles;
+- assets load through logical bundles; original PNG atlases remain intact until parity acceptance;
 - production builds as a static site;
 - GitHub Pages deployment works from the repository path;
 - the repository clearly distinguishes historical and modern work;

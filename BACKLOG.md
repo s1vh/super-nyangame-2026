@@ -1,8 +1,31 @@
-# Super NyanGame Revival — Post-Parity Backlog
+# Super NyanGame Revival — Implementation Tracker and Backlog
 
 > Deferred work for **Super NyanGame Revival** after the first faithful 1:1 port of the historical ActionScript / Starling game has been completed and validated.
 >
 > This backlog does **not** authorize implementation before parity is accepted. The first milestone remains preservation and behavioral equivalence with the original game.
+
+---
+
+## Authorized parity implementation (2026-09-18)
+
+Integration branch: local `dev`. The user approved the initial approximation for squash integration and closure of `codex/feature/legacy-parity`. Scope and acceptance: `MIGRATION.md`, `PARITY.md`. Further parity review remains open; post-parity features are not authorized by this integration.
+
+| ID | Feature | Status | Verification / remaining work |
+| --- | --- | --- | --- |
+| SN-PORT-001 | Preserve baseline and local workflow | resolved | Local main/dev/topic branches; historical files relocated unchanged; upstream untouched |
+| SN-PORT-002 | Source-first parity contract | resolved | Source fixtures and Starling 1.x geometry/order recorded in PARITY.md; visual acceptance pending |
+| SN-PORT-003 | TypeScript/Vite/Pixi bootstrap | resolved | TypeScript strict, PixiJS 8/WebGL, responsive logical stage; initial typecheck/build passed |
+| SN-PORT-004 | Atlas and font conversion | resolved | 3 asset tests passed: 136 regions, clip vertex fixtures, hashes for 16 copied assets |
+| SN-PORT-005 | Loading and screen flow | resolved | Original menu/play/result flow and proportional input verified in-browser; recoverable loaders implemented |
+| SN-PORT-006 | Clock, input and player | resolved | Numerical fixtures passed; 60/120/144 Hz equivalence, bounded stalls, pointer limits |
+| SN-PORT-007 | Spawns and obstacle movement | resolved | Seeded fixtures passed: source RNG, spawn bands, red edge spawn and Turbo attraction |
+| SN-PORT-008 | Collision, health, score and Turbo | resolved | Delayed flags, forward-removal contacts, 63-tick recovery, Turbo and bounded long run tested |
+| SN-PORT-009 | Rainbow, particles, background and HUD | resolved | Clip/glyph fixtures and 5 rendered-run cleanup checks passed; collection, impact, low-health trail and result reviewed in-browser |
+| SN-PORT-010 | Web Audio | resolved | 5 audio lifecycle tests passed: activation, first cue, original repeat limits, suspension, stale effects and failure |
+| SN-PORT-011 | Lifecycle and parity validation | resolved for local review | 30 unit/asset/render/audio tests and 14 Edge/Firefox integration checks passed; user parity acceptance and Safari review pending |
+| SN-PORT-012 | Static delivery and review | resolved | Production base path verified; build-only CI prepared; local commits and review documentation; no deployment |
+
+Completed rows retain verification evidence. New post-parity ideas remain deferred. SN-BL-001 is explicitly excluded from this implementation.
 
 ---
 

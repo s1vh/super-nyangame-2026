@@ -1,0 +1,15 @@
+:root { color-scheme: dark; font-family: system-ui, sans-serif; background: #110e20; color: #fff; }
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; }
+body { display: block; }
+#game { position: fixed; inset: 0; width: 100%; height: 100%; min-width: 0; min-height: 0; display: grid; place-items: center; }
+canvas { display: block; touch-action: none; }
+#status { position: absolute; z-index: 2; max-width: 32rem; padding: 1.25rem; text-align: center; line-height: 1.6; }
+#status:empty { display: none; }
+button { font: inherit; cursor: pointer; }
+button:focus-visible { outline: 3px solid #ffd755; outline-offset: 4px; }
+.image-button { position: fixed; z-index: 1; padding: 0; border: 0; background: transparent; touch-action: none; }
+.image-button[hidden] { display: none; }
+#qa { position: fixed; z-index: 3; left: 4px; right: 4px; bottom: 4px; padding: 6px; background: #000c; font: 12px monospace; }
+#qa button { margin: 2px; font-size: 12px; }
+#qa output { display: block; padding: 4px; }

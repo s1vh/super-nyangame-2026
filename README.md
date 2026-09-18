@@ -5,14 +5,14 @@
 ### A 2014 ActionScript / Starling university game, brought back to life for the modern web.
 
 ![Status](https://img.shields.io/badge/status-revival%20in%20progress-7c3aed?style=for-the-badge)
-![TypeScript](https://img.shields.io/badge/TypeScript-planned-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-implemented-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![PixiJS](https://img.shields.io/badge/PixiJS-8-E91E63?style=for-the-badge)
 ![WebGL](https://img.shields.io/badge/WebGL-browser%20native-990000?style=for-the-badge&logo=webgl&logoColor=white)
 ![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-planned-222222?style=for-the-badge&logo=github&logoColor=white)
 
 <br>
 
-<img src="arts/welcomeScreen_show.png" alt="Original Super NyanGame title screen" width="900">
+<img src="legacy/arts/welcomeScreen_show.png" alt="Original Super NyanGame title screen" width="900">
 
 <br>
 
@@ -21,6 +21,19 @@
 [Watch original gameplay](https://www.youtube.com/watch?v=2LAvAmsCCuY)
 
 </div>
+
+---
+
+## Play locally
+
+The TypeScript/PixiJS port is ready for local review. Final acceptance of the visual and gameplay match is pending.
+
+```sh
+npm ci
+npm run dev
+```
+
+Open http://127.0.0.1:5173/super-nyangame-2026/. Move the pointer vertically, collect stars, avoid enemies, and click the result star to return. Audio starts after a gesture. See [DEVELOPMENT.md](DEVELOPMENT.md) for builds, verification and the optional development checks.
 
 ---
 
@@ -135,7 +148,7 @@ Many concepts map cleanly between both architectures:
 | `TextureAtlas` | `PIXI.Spritesheet` |
 | `ENTER_FRAME` / juggler | `PIXI.Ticker` |
 | touch events | pointer events |
-| bitmap fonts | `PIXI.BitmapText` |
+| bitmap fonts | Pixi bitmap textures with source-compatible glyph layout |
 | Flash audio | Web Audio API |
 | filters / GPU effects | Pixi filters + GLSL shaders |
 
@@ -149,11 +162,11 @@ PixiJS provides the rendering layer the project needs while allowing the origina
 
 The original build uses a large shared sprite sheet containing much of the game artwork.
 
-That made sense for the original Flash/Starling workflow, but the revival will move toward **smaller logical asset bundles**.
+The parity build preserves both original PNG atlases byte for byte and converts their metadata for PixiJS. Physical splitting into **smaller logical asset bundles** is deferred until parity is accepted (SN-BL-001).
 
 The goal is not to create one network request per sprite.
 
-Instead, assets will be grouped by responsibility:
+After parity, assets may be grouped by responsibility:
 
 ```text
 assets/
@@ -169,7 +182,7 @@ This keeps texture batching efficient while making the game easier to extend.
 
 A future enemy should be addable without rebuilding an unrelated mega-atlas.
 
-The planned loading strategy is:
+The implemented loading strategy is:
 
 ```text
 HTML shell
@@ -270,7 +283,7 @@ The intended project history is:
 └── future development continues
 ```
 
-The exact GitHub repository/fork ownership arrangement is still being decided, but one principle is fixed:
+The active repository is `s1vh/super-nyangame-2026`. The historical upstream `s1vh-old-university-projects/VJ1217-GAME` is read-only. One principle is fixed:
 
 **the historical work and its authorship must remain visible.**
 
@@ -302,9 +315,9 @@ The 2026 work focuses first on preservation and technical modernization, then on
 | Original gameplay footage | ✅ Available |
 | Modern architecture | ✅ Defined |
 | Product requirements | ✅ Defined |
-| TypeScript / PixiJS bootstrap | ⏳ Planned |
-| Asset migration | ⏳ Planned |
-| 1:1 gameplay port | ⏳ Planned |
+| TypeScript / PixiJS bootstrap | ✅ Implemented |
+| Asset migration | ✅ Original PNGs preserved; metadata converted |
+| 1:1 gameplay port | ✅ Playable locally; user parity acceptance pending |
 | GitHub Pages release | ⏳ Planned |
 | New content | 🔒 After parity |
 | Leaderboard | 🔒 Future phase |
@@ -330,7 +343,7 @@ The 2026 work focuses first on preservation and technical modernization, then on
 
 ### Phase 2 — Modernize the asset pipeline
 
-- split the monolithic atlas into logical bundles;
+- preserve original PNG atlases; split them after parity acceptance;
 - migrate animation metadata;
 - preserve visual fidelity;
 - preload gameplay assets asynchronously.
@@ -393,9 +406,9 @@ Project documentation is maintained in English.
 
 The technical and product decisions for the revival are described in the project PRD:
 
-**[`Super_NyanGame_Revival_PRD.md`](Super_NyanGame_Revival_PRD.md)**
+**[`PRD.md`](PRD.md)**
 
-Additional migration and architecture documentation will be added as implementation progresses.
+Implementation and operation: [`MIGRATION.md`](MIGRATION.md), [`PARITY.md`](PARITY.md), [`DEVELOPMENT.md`](DEVELOPMENT.md), and [`VALIDATION.md`](VALIDATION.md).
 
 ---
 
